@@ -1,0 +1,12 @@
+.repsite .repsite-photo img {
+    float: left;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 5px 0;
+    margin-right: 20px;
+}
+
+.repsite {
+    position: inherit;
+}
