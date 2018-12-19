@@ -3,3 +3,4 @@ composer.lock
 bin
 gitignore-example
 .bashrc
+src/log
