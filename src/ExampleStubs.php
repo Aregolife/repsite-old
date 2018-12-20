@@ -2,112 +2,13 @@
 namespace AregoLife\Repsite;
 require_once(realpath(dirname(__FILE__) . '/../') . '/vendor/autoload.php');
 include_once(dirname(__FILE__) . '/config.php');
-if(defined('AREGOLIFE_DEBUG_MODE')){
-	error_reporting(-1);
-	ini_set('display_errors','1');
-}
-define('AREGOLIFE_API_KEY',trim(file_get_contents(dirname(__FILE__) . '/api.key')));
-define('AREGOLIFE_CONTEXT','AREGOLIFE');
-$wsdl_locations = WSDL::$wsdl_locations; 
-
-class SoapConsumer {
-	protected $_api_key;
-	protected $_client;
-	protected $_wsdl;
-	protected $_log;
-	protected $_context;
-	public function __construct($wsdl,$location){
-		ini_set('soap.wsdl_cache_enabled','0');
-		$this->_api_key = AREGOLIFE_API_KEY;
-		$this->_context = AREGOLIFE_CONTEXT;
-		$this->_client = new \SoapClient($wsdl,$conf =[
-			'location' => $location,
-			"exceptions"   => true,
-			'cache_wsdl' => WSDL_CACHE_NONE,
-			'soap_version' => SOAP_1_2 ,
-			'trace' => 1,
-			'uri' => 'http://www.trinitysoft.net',
-			'ssl_method' => SOAP_SSL_METHOD_SSLv23,
-		]);
-		$this->log($conf);
-	}
-	public function process_struct_description_to_php($desc){
-		$lines = explode("\n",$desc);
-		$file_contents = '<?php namespace \AregoLife\Repsite\Structures;
-		use \AregoLife\Repsite\TrivialLoader as Loader;
-		class ';
-		foreach($lines as $index => $ln){
-			if(preg_match('|^\s*struct ([^\s]+)\s*{|',$ln,$matches)){
-				$file_contents .= $matches[1] . ' extends Loader {
-				';
-				continue;
-			}else{
-				$ln_str = preg_replace('/^[\s]*(string|int|<anyXML>|double|boolean)\s*/','public \$',$ln,1);
-				$ln_str = preg_replace('/;/',";\n",$ln_str);
-				$file_contents .= $ln_str;
-			}
-		}
-		$file_contents .= "\n\n";
-		return $file_contents;
-	}
-
-	public function create_object_files(){
-		@mkdir(dirname(__FILE__) . '/Structures/');
-		$type_export  = $this->_client->__getTypes();
-		foreach($type_export as $index => $struct_description){
-			$matches = [];
-			if(preg_match('|^struct\s+([^ ]+)\s*{|',$struct_description,$matches)){
-				file_put_contents(dirname(__FILE__) . '/Structures/' . $matches[1] . '.php',
-					$this->process_struct_description_to_php($struct_description));
-			}else{
-				$this->error('Couldn\'t properly parse struct description: ' . var_export($struct_description,1));
-			}
-		}
-	}
-	private function error(){
-		$this->_log .= 'ERROR: ' . date('YYYY-MM-DD H:i:s') . '::' .  var_export(func_get_args(),1);
-	}
-	private function log(){
-		$this->_log .= date('YYYY-MM-DD H:i:s') . '::' .  var_export(func_get_args(),1);
-	}
-	public function call_func($func,$struct_object){
-		/**
-		 * IMPORTANT!!!
-		 * -- Firestorm's Token and Context keys are CASE SENSITIVE!
-		 */
-		$struct_object->Token =  $this->_api_key;
-		$struct_object->Context = $this->_context;
-		$this->log('called:' . $func,$struct_object);
-		$this->log('types: ' . var_export($this->_client->__getTypes(),1));
-		$output_headers = [];
-		$ret_val = null;
-		try{
-			$ret_val = $this->_client->$func($struct_object);
-		}catch(\Exception $e){
-			$this->log('exception: ' . $e->getMessage());
-			$this->log('output headrs:' . var_export($output_headers,1));
-		}
-		$this->log('last response:' . var_export($this->_client->__getLastResponse(),1));
-		$this->log('last response headers:' . var_export($this->_client->__getLastResponseHeaders(),1));
-		$this->log('last request:' . var_export($this->_client->__getLastRequest(),1));
-		$this->log('output headrs:' . var_export($output_headers,1));
-		return $ret_val;
-	}
-	public function __destruct(){
-		file_put_contents(dirname(__FILE__) . '/log', $this->_log,FILE_APPEND);
-	}
-
-}
-
-class Inventory extends SoapConsumer {
-	public function __construct(){
-		global $wsdl_locations;
-		$wsdl = $wsdl_locations['Inventory'];
-		parent::__construct($wsdl,'https://www.firestormwebservices.com/FirestormWebServices/FirestormInventoryWS.asmx');
-	}
-}
-
-function enroll_member_example(){
+use SoapConsumer;
+use \AregoLife\Repsite\Structures\EnrollMemberExtended;
+use \AregoLife\Repsite\Structures\EnrollCustomer;
+use \AregoLife\Repsite\Structures\EnrollMemberAsOrphan;
+use \AregoLife\Repsite\Structures\GetCatalogueList;
+class ExampleStubs {
+public static function enroll_member_example(){
 	try {
 		$enrollments = new Enrollments();
 		$ret = $enrollments->call_func('EnrollMemberExtended',new EnrollMemberExtended(
@@ -163,7 +64,7 @@ function enroll_member_example(){
 	}
 	return ['status' => 'ok','return' => $ret];
 }
-function handle_return_status($result,$result_member){
+public static function handle_return_status($result,$result_member){
 		if(isset($result->$result_member)){
 			$dom = new \DOMDocument();
 			if($dom->loadXML($result->$result_member) === false){
@@ -184,7 +85,7 @@ function handle_return_status($result,$result_member){
 		return ['error' => 'Unreachable code segment hit','result' => $result];
 }
 
-function enroll_customer_example(){
+public static function enroll_customer_example(){
 	$enrollments = new Enrollments();
 	try{
 		srand(time());
@@ -219,7 +120,7 @@ function enroll_customer_example(){
 	}
 }
 
-function enroll_member_as_orphan_example(){
+public static function enroll_member_as_orphan_example(){
 	$enrollments = new Enrollments();
 	try{
 		srand(time());
@@ -286,14 +187,7 @@ Must be >= 0 " --the docs
 	}
 }
 
-class GetCatalogueList extends TrivialLoader {
-public $CatalogueID;
-public $CountryID;
-public $DealershipTypeID;
-public $RankCode;
-public $ActiveOnly;
-};
-function get_catalogue_list_example(){
+public static function get_catalogue_list_example(){
 	$inventory = new Inventory();
 	try{
 		srand(time());
@@ -317,17 +211,6 @@ function get_catalogue_list_example(){
 	}
 }
 
+};
 
-$result = enroll_member_as_orphan_example();
-	var_dump($result);
-die;
-$result = get_catalogue_list_example();
-//if(isset($result['error'])){
-	var_dump($result);
-//}
-die;
-$result = enroll_customer_example();
-if(isset($result['error'])){
-	var_dump($result);
-}
-
+ExampleStubs::enroll_member_example();

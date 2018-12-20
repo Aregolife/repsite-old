@@ -1,4 +1,4 @@
-<?php namespace \AregoLife\Repsite;
+<?php namespace AregoLife\Repsite;
 require_once(realpath(dirname(__FILE__) . '/../') . '/vendor/autoload.php');
 class TrivialLoader {
 	public function __construct($values){
