@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<GetCatalogueListResponse xmlns="http://trinitysoft.net/">
+			<GetCatalogueListResult>
+				<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+					<xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="Inventory" msdata:UseCurrentLocale="true">
+						<xs:complexType>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="Inventory">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="CatalogueID" type="xs:int" minOccurs="0" />
+											<xs:element name="Name" type="xs:string" minOccurs="0" />
+											<xs:element name="Active" type="xs:short" minOccurs="0" />
+											<xs:element name="MinimumOrder" type="xs:decimal" minOccurs="0" />
+											<xs:element name="IsPublic" type="xs:short" minOccurs="0" />
+											<xs:element name="IsEnrollment" type="xs:short" minOccurs="0" />
+											<xs:element name="IsAutoship" type="xs:short" minOccurs="0" />
+											<xs:element name="IsParty" type="xs:short" minOccurs="0" />
+											<xs:element name="IsHostAward" type="xs:short" minOccurs="0" />
+											<xs:element name="UseDateFiltering" type="xs:short" minOccurs="0" />
+											<xs:element name="StartDate" type="xs:dateTime" minOccurs="0" />
+											<xs:element name="EndDate" type="xs:dateTime" minOccurs="0" />
+											<xs:element name="CustomerTypeID" type="xs:int" minOccurs="0" />
+											<xs:element name="InHouseUseOnly" type="xs:short" minOccurs="0" />
+										</xs:sequence>
+									</xs:complexType>
+								</xs:element>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+				<diffgr:diffgram xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:diffgr="urn:schemas-microsoft-com:xml-diffgram-v1">
+					<DocumentElement xmlns="">
+						<Inventory diffgr:id="Inventory1" msdata:rowOrder="0">
+							<CatalogueID>206</CatalogueID>
+							<Name>Enrollment Catalogue - US</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>-1</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory2" msdata:rowOrder="1">
+							<CatalogueID>207</CatalogueID>
+							<Name>Distributor Catalogue - USA</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory3" msdata:rowOrder="2">
+							<CatalogueID>208</CatalogueID>
+							<Name>Customer Retail Catalogue - USA </Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>1</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory4" msdata:rowOrder="3">
+							<CatalogueID>212</CatalogueID>
+							<Name>Fees</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>-1</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory5" msdata:rowOrder="4">
+							<CatalogueID>213</CatalogueID>
+							<Name>Enrollment Catalogue - International</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>-1</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory6" msdata:rowOrder="5">
+							<CatalogueID>214</CatalogueID>
+							<Name>Preferred Customer Catalogue -USA</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>2</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory7" msdata:rowOrder="6">
+							<CatalogueID>215</CatalogueID>
+							<Name>Preferred Customer Enrollment Catalogue - USA</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>-1</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>2</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory8" msdata:rowOrder="7">
+							<CatalogueID>216</CatalogueID>
+							<Name>Enrollment Catalogue - International - Africa</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>-1</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory9" msdata:rowOrder="8">
+							<CatalogueID>217</CatalogueID>
+							<Name>PC Enrollment Catalogue - International</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>-1</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>2</CustomerTypeID>
+							<InHouseUseOnly>-1</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory10" msdata:rowOrder="9">
+							<CatalogueID>218</CatalogueID>
+							<Name>Preferred Customer Catalogue -  International</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>2</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory11" msdata:rowOrder="10">
+							<CatalogueID>219</CatalogueID>
+							<Name>Distributor Catalogue - International</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory12" msdata:rowOrder="11">
+							<CatalogueID>222</CatalogueID>
+							<Name>Customer Retail Catalogue - International</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>1</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory13" msdata:rowOrder="12">
+							<CatalogueID>223</CatalogueID>
+							<Name>iPad Catalogue</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>0</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>0</CustomerTypeID>
+							<InHouseUseOnly>-1</InHouseUseOnly>
+						</Inventory>
+						<Inventory diffgr:id="Inventory14" msdata:rowOrder="13">
+							<CatalogueID>224</CatalogueID>
+							<Name>Customer Retail Catalogue - Canada</Name>
+							<Active>-1</Active>
+							<MinimumOrder>0.0000</MinimumOrder>
+							<IsPublic>-1</IsPublic>
+							<IsEnrollment>0</IsEnrollment>
+							<IsAutoship>0</IsAutoship>
+							<IsParty>0</IsParty>
+							<IsHostAward>0</IsHostAward>
+							<UseDateFiltering>0</UseDateFiltering>
+							<CustomerTypeID>1</CustomerTypeID>
+							<InHouseUseOnly>0</InHouseUseOnly>
+						</Inventory>
+					</DocumentElement>
+				</diffgr:diffgram>
+			</GetCatalogueListResult>
+		</GetCatalogueListResponse>
+	</soap:Body>
+</soap:Envelope>
