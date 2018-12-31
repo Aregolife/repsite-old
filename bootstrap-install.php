@@ -57,3 +57,10 @@ echo 'Check out ' . $git_ignore_example . ' for a basic .gitignore file example'
 if(file_exists($lockfile)){
 	unlink(realpath(dirname(__FILE__)) . '/__bootstrap.lock');
 }
+
+echo '#####################################################################'
+echo -ne '\033[32m PLEASE RUN THIS AS r00t SO THAT WE HAVE THE APPROPRIATE DB DRIVERS'
+echo -ne '\033[34mapt-get install php7.2-mysql php7.2-common php7.2-sqlite3\033[0m'
+echo '#####################################################################'
+
+echo 'YOU NEED TO MANUALLY RUN THE bin/load.php file at repsite/vendor/joshmoody/mock-data/bin/load.php'

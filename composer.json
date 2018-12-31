@@ -9,6 +9,7 @@
         "phpunit/phpunit": "^7.5"
     },
     "require": {
-        "facebook/webdriver": "^1.6"
+        "facebook/webdriver": "^1.6",
+				"joshmoody/mock-data": "dev-master"
     }
 }

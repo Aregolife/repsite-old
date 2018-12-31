@@ -6,7 +6,9 @@ Version:      1.0.0
 Author:       Eric Larsen
 */
 require_once (plugin_dir_path(__FILE__) . "widget.php");
-
+require_once dirname(__FILE__) . '/vendor/autoload.php';
+use AregoLife\Repsite\Config as Conf;
+use AregoLife\Repsite\HookController;
 if (!class_exists('Repsite_Aregolife'))
 {
 	class Repsite_Aregolife
@@ -46,6 +48,9 @@ if (!class_exists('Repsite_Aregolife'))
 				$this,
 				'register_widget'
 			));
+			add_action('woocommerce_after_checkout_form',implode('::',
+				[HookController::class,'woocommerce_after_checkout_form']
+			));
 		}
         
 		public static function init()
@@ -54,8 +59,8 @@ if (!class_exists('Repsite_Aregolife'))
 			return self::$instance;
 		}
         
-		public function replace_siteurl($val)
-		{ //make all generated links keep distname as the subdomain
+		public function replace_siteurl($val) {
+			//make all generated links keep distname as the subdomain
 			return '//' . $_SERVER['HTTP_HOST'];
 		}
         
@@ -79,7 +84,7 @@ if (!class_exists('Repsite_Aregolife'))
         
 		public function repsite_handler()
 		{
-			$username = $_POST['username'];
+			$username = $_POST['username'] ?? null;
 			$url = "https://aregolife.com/"; //TODO: Create setting
 			$data = [];
 			if ($username)

@@ -14,6 +14,7 @@ class SoapConsumer {
 	protected $_wsdl;
 	protected $_log;
 	protected $_context;
+	protected $_response_data;
 	public function __construct($wsdl,$location){
 		ini_set('soap.wsdl_cache_enabled','0');
 		$this->_api_key = AREGOLIFE_API_KEY;
@@ -88,6 +89,12 @@ class SoapConsumer {
 		$this->log('last response headers:' . var_export($this->_client->__getLastResponseHeaders(),1));
 		$this->log('last request:' . var_export($this->_client->__getLastRequest(),1));
 		$this->log('output headrs:' . var_export($output_headers,1));
+		$this->_response_data[] = [
+			'time' => time(null),
+			'response' => $this->_client->__getLastResponse(),
+			'response_headers' => $this->_client->__getLastResponseHeaders(),
+			'request' => $this->_client->__getLastRequest()
+		];
 		return $ret_val;
 	}
 	public function __destruct(){
