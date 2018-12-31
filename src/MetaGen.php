@@ -5,7 +5,7 @@ include_once(dirname(__FILE__) . '/config.php');
 $wsdl_locations = WSDL::$wsdl_locations; 
 
 foreach([Inventory::class,
-	Enrollments::class] as $class_name){
+	Enrollments::class,Dealer::class,Dealership::class] as $class_name){
 	$obj = new $class_name();
 	$obj->create_object_files();
 }

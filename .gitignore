@@ -4,3 +4,6 @@ bin
 gitignore-example
 .bashrc
 src/log
+src/error_log
+src/is_dev
+

@@ -6,8 +6,9 @@ use joshmoody\Mock\Generator as Gen;
 
 class Customer {
 	public function __construct($state='UT'){
-		$generator = $this->generator = new Gen();
-		$person = $generator->getPerson($state);
+		 $this->_generator = new Gen();
+		 $this->_state = $state;
+		$person = $this->_generator->getPerson($state);
 		$name = $person->name;
 		$this->billing_first_name = $name->first;
 		$this->billing_last_name = $name->last;
@@ -25,6 +26,9 @@ class Customer {
 		return json_encode($this,1);
 	}
 	public function generator(){
-		return $this->generator;
+		return $this->_generator;
+	}
+	public function person(){
+		return $this->generator()->getPerson($this->_state);
 	}
 }
